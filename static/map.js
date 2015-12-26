@@ -6,9 +6,10 @@ var drinking_water_icon = L.icon({
 
 function getLocation() {
     if (navigator.geolocation) {
+        console.log(navigator.geolocation);
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        $("#x").text("Geolocation is not supported by this browser.");
+        $("#error").text("Geolocation is not supported by this browser").show();
     }
 }
 
@@ -39,7 +40,9 @@ function getFountains() {
         $("#status").show();
         for (var i in data["elements"]) {
             var element = data["elements"][i];
-            L.marker([element["lat"], element["lon"]], {icon: drinking_water_icon}).addTo(map);
+            L.marker([element["lat"], element["lon"]], {
+                icon: drinking_water_icon
+            }).addTo(map);
         }
     });
 }

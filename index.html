@@ -19,6 +19,12 @@
             <h1>Find a Fountain</h1>
             <p>Are you thirsty? Find nearby drinking fountains using OpenStreetMap data</p>
         </div>
+
+        <div id="error" class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+        </div>
+
         <p><span class="glyphicon glyphicon-globe"></span> Your position: <span id="location"></span></p>
         <p id="loading" class="alert alert-info">Looking for drinking water...</p>
         <p id="status" class="alert alert-success">Found <b id="found_count"></b> drinking spots near your position</p>
