@@ -2,7 +2,7 @@ var map;
 
 function getLocation(){
     if (navigator.geolocation) {
-   		navigator.geolocation.getCurrentPosition(showPosition);
+		navigator.geolocation.getCurrentPosition(showPosition);
     } else {
         $("#x").text("Geolocation is not supported by this browser.");
     }
@@ -21,7 +21,7 @@ function showPosition(position){
 }
 
 
-function init_map(){	
+function init_map(){
 	// initialize the map
 	map = L.map('map').setView([0,0], 2);
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png ', {
