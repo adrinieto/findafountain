@@ -7,7 +7,9 @@ var drinking_water_icon = L.icon({
 function getLocation() {
     if (navigator.geolocation) {
         console.log(navigator.geolocation);
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, function(){
+            $("#error").text("Couldn't get current location").show();
+        });
     } else {
         $("#error").text("Geolocation is not supported by this browser").show();
     }
