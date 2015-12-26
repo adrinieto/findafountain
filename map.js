@@ -15,11 +15,27 @@ function showPosition(position){
 	L.marker([lat, lon]).addTo(map);
 	L.circle([lat, lon], position.coords.accuracy, {
 			color: 'blue',
-			fillOpacity: 0.5
+			fillOpacity: 0.2
 		}
 	).addTo(map);
+	getFountains();
 }
 
+function getFountains(){
+	bounds = map.getBounds();
+	coords = bounds.getSouth() + "," + bounds.getWest() + "," + bounds.getNorth() + "," + bounds.getEast();
+
+	api = "http://overpass.osm.rambler.ru/cgi/interpreter";
+	query = "?data=[out:json][timeout:25];(node[\"amenity\"=\"drinking_water\"](" + coords + "););out;";
+	
+	console.log(api + query);
+	$.get(api + query, function(data){
+		for (i in data["elements"]){
+			element = data["elements"][i];
+			L.marker([element["lat"], element["lon"]]).addTo(map);
+		}
+	});
+}
 
 function init_map(){
 	// initialize the map
