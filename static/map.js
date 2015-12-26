@@ -1,4 +1,8 @@
 var map;
+var drinking_water_icon = L.icon({
+    iconUrl: 'static/drinking_water_color.png',
+    iconSize: [40, 40],
+})
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -35,7 +39,7 @@ function getFountains() {
         $("#status").show();
         for (var i in data["elements"]) {
             var element = data["elements"][i];
-            L.marker([element["lat"], element["lon"]]).addTo(map);
+            L.marker([element["lat"], element["lon"]], {icon: drinking_water_icon}).addTo(map);
         }
     });
 }
