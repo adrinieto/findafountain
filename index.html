@@ -1,22 +1,35 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>Find a Fountain</title>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="map.js"></script>
-    <style type="text/css">
-        #map {
-            height: 80%;
-        }
-    </style>
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+
+    <link rel="stylesheet" href="static/map.css">
 </head>
 
 <body>
-    <p id="status"></p>
-    <div id="map"></div>
+    <div class="container">
+        <div class="page-header">
+            <h1>Find a Fountain</h1>
+            <p>Are you thirsty? Find nearby drinking fountains using OpenStreetMap data</p>
+        </div>
+        <p><span class="glyphicon glyphicon-globe"></span> Your position: <span id="location"></span></p>
+        <p id="loading" class="alert alert-info">Looking for drinking water...</p>
+        <p id="status" class="alert alert-success">Found <b id="found_count"></b> drinking spots near your position</p>
+        <div id="map"></div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="static/map.js"></script>
 </body>
 
 </html>

@@ -9,9 +9,9 @@ function getLocation() {
 }
 
 function showPosition(position) {
-	var lat = position.coords.latitude;
+    var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-    $("#status").html("Latitude: " + lat + ", longitude: " + lon);
+    $("#location").text("(" + lat.toFixed(2) + ", " + lon.toFixed(2) + ")");
     map.setZoom(15).setView([lat, lon]);
     L.marker([lat, lon]).addTo(map);
     L.circle([lat, lon], position.coords.accuracy, {
@@ -30,6 +30,9 @@ function getFountains() {
 
     console.log(api + query);
     $.get(api + query, function (data) {
+        $("#loading").hide();
+        $("#found_count").text(data["elements"].length);
+        $("#status").show();
         for (var i in data["elements"]) {
             var element = data["elements"][i];
             L.marker([element["lat"], element["lon"]]).addTo(map);

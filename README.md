@@ -1,3 +1,3 @@
 # Find a Fountain
 
-Find nearby drinking fountains using data from OpenStreetMap
+Are you thirsty? Find nearby drinking fountains using data from OpenStreetMap.
