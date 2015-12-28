@@ -9,6 +9,7 @@ body {
 }
 
 #status,
+#warning,
 #error {
     display: none;
 }

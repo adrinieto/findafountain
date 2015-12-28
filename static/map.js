@@ -4,6 +4,15 @@ var drinking_water_icon = L.icon({
     iconSize: [40, 40],
 })
 
+function getLocationFromIp() {
+    $.getJSON("http://ip-api.com/json/", function (data) {
+        showPosition(data.lat, data.lon, 0);
+        if (data.status = "success"){
+            $("#warning").append(". Getting position using the IP...");
+        }
+    });
+}
+
 function getLocation() {
     var options = {
         enableHighAccuracy: false,
@@ -12,23 +21,25 @@ function getLocation() {
     };
 
     if (navigator.geolocation) {
-        console.log(navigator.geolocation);
-        navigator.geolocation.getCurrentPosition(showPosition, function (err) {
-            console.warn('ERROR(' + err.code + '): ' + err.message);
-            $("#error").text(err.message).show();
+        navigator.geolocation.getCurrentPosition(showPositionGeolocation, function (err) {
+            $("#warning").text(err.message).show();
+            getLocationFromIp();
         });
     } else {
-        $("#error").text("Geolocation is not supported by this browser").show();
+        $("#warning").text("Geolocation is not supported by this browser").show();
+        getLocationFromIp();
     }
 }
 
-function showPosition(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
+function showPositionGeolocation(position) {
+    showPosition(position.coords.latitude, position.coords.longitude, position.coords.accuracy);
+}
+
+function showPosition(lat, lon, accuracy) {
     $("#location").text("(" + lat.toFixed(2) + ", " + lon.toFixed(2) + ")");
     map.setZoom(15).setView([lat, lon]);
     L.marker([lat, lon]).addTo(map);
-    L.circle([lat, lon], position.coords.accuracy, {
+    L.circle([lat, lon], accuracy, {
         color: 'blue',
         fillOpacity: 0.2
     }).addTo(map);
