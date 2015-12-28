@@ -5,10 +5,17 @@ var drinking_water_icon = L.icon({
 })
 
 function getLocation() {
+    var options = {
+        enableHighAccuracy: false,
+        timeout: 8000,
+        maximumAge: 0,
+    };
+
     if (navigator.geolocation) {
         console.log(navigator.geolocation);
-        navigator.geolocation.getCurrentPosition(showPosition, function(){
-            $("#error").text("Couldn't get current location").show();
+        navigator.geolocation.getCurrentPosition(showPosition, function (err) {
+            console.warn('ERROR(' + err.code + '): ' + err.message);
+            $("#error").text(err.message).show();
         });
     } else {
         $("#error").text("Geolocation is not supported by this browser").show();
