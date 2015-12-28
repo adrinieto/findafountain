@@ -8,7 +8,7 @@ function getLocation() {
     var options = {
         enableHighAccuracy: false,
         timeout: 8000,
-        maximumAge: 0,
+        maximumAge: Infinity,
     };
 
     if (navigator.geolocation) {
